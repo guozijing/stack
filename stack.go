@@ -26,7 +26,7 @@ func (s *ItemStack) Pop() int64 {
 	item := s.items[len(s.items)-1]
 	s.items = s.items[:len(s.items)-1 ]
 	s.lock.Unlock()
-	return &item
+	return item
 }
 
 func (s *ItemStack) IsEmpty() bool {
@@ -41,5 +41,5 @@ func (s *ItemStack) Top() int64 {
 	s.lock.Lock()
 	item := s.items[len(s.items)-1]
 	s.lock.Unlock()
-	return &item
+	return item
 }
