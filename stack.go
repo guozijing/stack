@@ -39,3 +39,10 @@ func (s *ItemStack) IsEmpty() bool {
 func (s *ItemStack) Size() int {
 	return len(s.items)
 }
+
+func (s *ItemStack) Top() *Item {
+	s.lock.Lock()
+	item := s.items[len(s.items)-1]
+	s.lock.Unlock()
+	return &item
+}
