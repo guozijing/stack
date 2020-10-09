@@ -12,7 +12,8 @@ type ItemStack struct {
 	lock  sync.RWMutex
 }
 
-func (s *ItemStack) New() *ItemStack {
+func New() *ItemStack {
+	s := &ItemStack{}
 	s.items = []Item{}
 	return s
 }
