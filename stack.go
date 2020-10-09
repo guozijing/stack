@@ -44,5 +44,5 @@ func (s *ItemStack) Top() *Item {
 	s.lock.Lock()
 	item := s.items[len(s.items)-1]
 	s.lock.Unlock()
-	return &item
+	return item
 }
