@@ -6,7 +6,7 @@ import (
 
 
 type ItemStack struct {
-	items []int64
+	items []int
 	lock  sync.RWMutex
 }
 
@@ -15,13 +15,13 @@ func New() *ItemStack {
 	return s
 }
 
-func (s *ItemStack) Push(t int64) {
+func (s *ItemStack) Push(t int) {
 	s.lock.Lock()
 	s.items = append(s.items, t)
 	s.lock.Unlock()
 }
 
-func (s *ItemStack) Pop() int64 {
+func (s *ItemStack) Pop() int {
 	s.lock.Lock()
 	item := s.items[len(s.items)-1]
 	s.items = s.items[:len(s.items)-1 ]
@@ -37,7 +37,7 @@ func (s *ItemStack) Size() int {
 	return len(s.items)
 }
 
-func (s *ItemStack) Top() int64 {
+func (s *ItemStack) Top() int {
 	s.lock.Lock()
 	item := s.items[len(s.items)-1]
 	s.lock.Unlock()
